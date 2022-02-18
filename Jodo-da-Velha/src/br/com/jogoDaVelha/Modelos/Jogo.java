@@ -8,7 +8,6 @@ public class Jogo {
     private int vez = 1;
     private Jogador jogador1;
     private Jogador jogador2;
-    //private String opcao;
     public Scanner scanner = new Scanner(System.in);
 
     public Jogo() {
@@ -20,46 +19,30 @@ public class Jogo {
 
     public void iniciarJogadores() {
         if (escolherJogador() == 1) {
-            //opcao = "X";
             this.jogador1 = new JogadorHumano(1);
         } else {
-            //opcao = "O";
-            this.jogador1 = new JogadorComputador(1);
+            this.jogador1 = new JogadorComputador(2);
         }
 
-        if (escolherJogador() == 1) {
-            //opcao = "X";
+        if (escolherJogador() == 2) {
             this.jogador2 = new JogadorHumano(2);
         } else {
-            //opcao = "O";
-            this.jogador2 = new JogadorComputador(2);
+            this.jogador2 = new JogadorComputador(1);
         }
-
-        /*System.out.println("Primeiro jogador: ");
-        if (escolherJogador() == 1) {
-            this.jogador1 = new JogadorHumano(1);
-        } else {
-            this.jogador1 = new JogadorComputador(1);
-        }
-
-        System.out.println("Segundo jogador: ");
-        if (escolherJogador() == 1) {
-            this.jogador2 = new JogadorHumano(2);
-        } else {
-            this.jogador2 = new JogadorComputador(2);
-        }*/
     }
 
     private int escolherJogador() {
         int opcao = 0;
 
-        System.out.println("1. X");
-        System.out.println("2. O\n");
-        System.out.print("Opção: ");
-        opcao = scanner.nextInt();
-        if (opcao != 1 && opcao != 2) {
-            System.out.println("Opção inválida! Tente novamente ");
-        }
+        do {
+            System.out.println("1. X");
+            System.out.println("2. O\n");
+            System.out.print("Opção: ");
+            opcao = scanner.nextInt();
+            if (opcao != 1 && opcao != 2) {
+                System.out.println("Opção inválida! Tente novamente ");
+            }
+        } while (opcao != 1 && opcao != 2);
 
         return opcao;
     }
